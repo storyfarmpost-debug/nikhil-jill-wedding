@@ -413,47 +413,7 @@
     margin-bottom: 0.5rem;
   }
 
-  /* ── GUESTBOOK ── */
-  #guestbook { background: var(--warm-white); }
-  .guestbook-container { max-width: 900px; margin: 0 auto; }
-  .guest-stats {
-    display: flex; gap: 2rem; margin-bottom: 2.5rem;
-  }
-  .guest-stat {
-    text-align: center;
-    background: #fff;
-    border: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    flex: 1;
-  }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--dark);
-    display: block;
-  }
-  .stat-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-light);
-  }
-  .guestbook-entries {
-    background: #fff;
-    border: 1px solid var(--border);
-    padding: 2rem;
-    min-height: 150px;
-    text-align: center;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+
 
   /* ── PHOTOS ── */
   #photos { max-width: 700px; margin: 0 auto; }
@@ -549,7 +509,6 @@
     <li><a href="#home">Home</a></li>
     <li><a href="#details">Details</a></li>
     <li><a href="#rsvp">RSVP</a></li>
-    <li><a href="#guestbook">Guestbook</a></li>
     <li><a href="#photos">Photos</a></li>
   </ul>
 </nav>
@@ -689,31 +648,7 @@
   </div>
 </section>
 
-<!-- GUESTBOOK -->
-<section id="guestbook">
-  <div class="guestbook-container center">
-    <span class="section-label">Guest List</span>
-    <h2>Our <em>guestbook</em></h2>
-    <div class="guest-stats">
-      <div class="guest-stat">
-        <span class="stat-num" id="total-guests">0</span>
-        <span class="stat-label">Total Guests</span>
-      </div>
-      <div class="guest-stat">
-        <span class="stat-num" id="attending">0</span>
-        <span class="stat-label">Attending</span>
-      </div>
-      <div class="guest-stat">
-        <span class="stat-num" id="declined">0</span>
-        <span class="stat-label">Can't Make It</span>
-      </div>
-    </div>
-    <div class="guestbook-entries">
-      <span style="font-size:1.5rem;">💐</span>
-      <p>Please use the RSVP form above to submit your response.<br>Share the link with your guests!</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- PHOTOS -->
 <section id="photos" style="padding: 5rem 2rem;">
@@ -852,18 +787,10 @@ function submitRsvp() {
   window.location.href = GOOGLE_FORM_VIEW_URL;
 }
 
-function updateGuestbook() {
-  const data = JSON.parse(localStorage.getItem('rsvp_data') || '{"entries":[]}');
-  const attending = data.entries.filter(e => e.attendance === 'yes');
-  const declined = data.entries.filter(e => e.attendance === 'no');
-  const totalGuests = attending.reduce((s,e) => s + e.guestCount, 0);
-  document.getElementById('total-guests').textContent = data.entries.length;
-  document.getElementById('attending').textContent = totalGuests;
-  document.getElementById('declined').textContent = declined.length;
-}
+
 
 loadGoogleQuestionMap().catch(() => {});
-updateGuestbook();
+
 
 // ── QR ──
 function generateQR() {
