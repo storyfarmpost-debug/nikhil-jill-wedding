@@ -720,19 +720,25 @@
   <div class="photos-container center">
     <span class="section-label">Memories</span>
     <h2>Share your <em>photos</em></h2>
-    <p class="section-intro">Captured a beautiful moment? Upload your photos to our shared wedding gallery — paste your Google Drive folder link below and generate a QR code your guests can scan!</p>
+    <p class="section-intro">Captured a beautiful moment at our wedding? Scan the QR code below or tap the button to upload your photos and videos directly to our shared album. We'd love to see the day through your eyes! 📸</p>
     <div class="photos-box">
-      <div class="photos-input-group">
-        <input type="text" id="drive-link" placeholder="📁 Google Drive Shared Folder Link">
-        <button class="btn" onclick="generateQR()">Generate QR</button>
+      <!-- QR Code using Google Charts API -->
+      <div style="text-align:center; margin-bottom: 1.5rem;">
+        <p style="font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);margin-bottom:1rem;">Scan to upload your photos & videos</p>
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://drive.google.com/drive/folders/1dVvx3cTB7-bTC8nlxrFFfQrXNoXFM-Pa%3Fusp%3Dsharing&color=2d2a24&bgcolor=faf8f3&margin=10"
+          alt="QR Code to upload wedding photos"
+          style="border: 1px solid var(--border); padding: 8px; background: var(--cream);"
+          width="220" height="220"
+        >
+      </div>
+      <div style="text-align:center;">
+        <a href="https://drive.google.com/drive/folders/1dVvx3cTB7-bTC8nlxrFFfQrXNoXFM-Pa?usp=sharing" target="_blank" class="btn btn-gold" style="display:inline-block; margin-bottom: 1rem;">
+          📁 Open Photo Album ↗
+        </a>
       </div>
       <div class="photos-tip">
-        💡 In Google Drive: right-click folder → Share → Anyone with the link → set to Editor → Copy link
-      </div>
-      <div id="qr-area" class="qr-placeholder" style="display:none;">
-        <p>📸 Scan to upload photos</p>
-        <p style="font-size:0.75rem;color:var(--text-light);">Show this QR at your wedding so guests can upload instantly</p>
-        <a id="drive-open" href="#" target="_blank" class="btn" style="margin-top:1rem;display:inline-block;">Open Drive Folder ↗</a>
+        💡 <strong>How to upload:</strong> Scan the QR code with your phone camera, or tap the button above → tap the <strong>+</strong> button in Google Drive → select your photos or videos. No Google account needed!
       </div>
     </div>
   </div>
